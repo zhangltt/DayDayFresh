@@ -8,32 +8,53 @@
     <script src="/static/js/jquery-1.12.4.min.js"></script>
     <script>
     $(function(){
-    $('.name_input').change(function(){
-        $.get('user_name/',{'name':$(this).val()},function(data){
-            alert(data)
-            if(data == 'False')
+        // 登陆界面用户验证
+        $('.name_input').change(function(){
+        $.get('/users/user_name/',{'name':$('.name_input').val()},function(data){
+            if(data.result == '0')
             {
+
               $('.user_error').css({'display':'block'})
 
+            }
+            else
+            {
+                $('.user_error').css({'display':'none'})
             }
 
         });
 
     });
 
-    $('.pass_input').change(function(){
-       $.get('user_passwd/',{'passwd':$(this).val()},function(data){
-         alert(data)
-           if(data == 'False')
-           {
-               $('.pwd_error').css({'display':'block'})
-           }
 
-       }) ;
+            // 密码验证
+         $('.pass_input').change(function(){
+        $.get('/users/user_passwd/',{'passwd':$('.pass_input').val(),'name':$('.name_input').val()},function(data){
+            if(data.result == '0')
+            {
+
+              $('.pwd_error').css({'display':'block'})
+
+            }
+            else
+            {
+                $('.pwd_error').css({'display':'none'})
+            }
+
+        });
+
     });
 
 
+    // 记住账号
+    //$('#jizhu').click(function(){
+      //  $.get('/users/jizhu/',{"result":'True','name':$('.name_input').val()},function(data){
+        //    alert(data.result)
+        //})
 
+
+
+   // })
 
 
 
@@ -66,7 +87,7 @@
                     <input type="password" name="pwd" class="pass_input" placeholder="请输入密码">
                     <div class="pwd_error">输入错误</div>
                     <div class="more_input clearfix">
-                        <input type="checkbox" name="">
+                        <input type="checkbox" name="jizhu" value="True">
                         <label>记住用户名</label>
                         <a href="#">忘记密码</a>
                     </div>

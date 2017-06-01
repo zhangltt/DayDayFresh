@@ -51,6 +51,20 @@ $(function(){
 			$('#user_name').next().hide();
 			error_name = false;
 		}
+
+		// 像视图传数据(uname的值)
+		$.get('/users/check_user/', {'uname': $('#user_name').val()},function(data){
+			//返回的条数为1则已经注册,0可以注册
+			if(data.nums == 1)
+			{
+				$('#user_name').next().html('用户已经注册')
+				$('#user_name').next().show();
+
+			}
+
+		});
+
+
 	}
 
 	function check_pwd(){
@@ -65,7 +79,8 @@ $(function(){
 		{
 			$('#pwd').next().hide();
 			error_password = false;
-		}		
+		}
+
 	}
 
 

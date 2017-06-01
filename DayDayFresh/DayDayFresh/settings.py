@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
+    'goods',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -80,7 +81,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'daydayfresh',
         'HOST': 'localhost',
-        'PORT': '3306',
+        'PORT': 3306,
         'USER': 'root',
         'PASSWORD':'mysql',
     }

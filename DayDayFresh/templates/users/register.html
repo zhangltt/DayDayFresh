@@ -6,6 +6,9 @@
 <link rel="stylesheet" type="text/css" href="/static/css/main.css">
 <script type="text/javascript" src="/static/js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="/static/js/register.js"></script>
+
+
+
 {%endblock head%}
 
 {%block content%}
@@ -22,7 +25,8 @@
             <a href="#">登录</a>
         </div>
         <div class="reg_form clearfix">
-            <form>
+            <form method="post" action="/users/commit/" id="reg_form">
+                {%csrf_token%}
             <ul>
                 <li>
                     <label>用户名:</label>
